@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static "new.css" %}">
+{% endblock css %}
+{% block title %}
+<title>News - {{ new.title }}</title>
+{% endblock title %}
+
+{% block content %}
+<div class="new-container">
+    {% if new.image %}
+    <img class="new-image" src="{{ new.image.url }}" onerror="this.src='{% static "image_not_found.png" %}';" alt="Зображення новини">
+    {% endif %}
+    <h2 class="new-title">{{ new.title }}</h2>
+    <p class="new-text">{{ new.text }}</p>
+
+    {% if new.category %}
+    <hr class="new-category-line">
+    <p class="new-category">Категорія: {{ new.category.name }}</p>
+    {% endif %}
+</div>
+{% endblock content %}

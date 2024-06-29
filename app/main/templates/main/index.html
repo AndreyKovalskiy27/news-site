@@ -1,0 +1,70 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load change_params %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static "index.css" %}">
+{% endblock css %}
+{% block title %}
+<title>News - головна</title>
+{% endblock title %}
+
+{% block content %}
+<!-- Фільтр по категоріям -->
+<div class="news-category-filter">
+    <h3>Фільтр по категоріям</h3>
+    <div class="news-category-filter-form">
+        <a class="category" href="?{% change_params category="" %}">Всі категорії</a>
+        {% for category in categories %}
+        <a class="category" href="?{% change_params category=category.slug %}" name="category">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Пошук -->
+<div class="search">
+    <h3>Пошук</h3>
+    <form class="search-form" action="{% url "main:index" %}" method="get">
+        <input type="text" name="query" placeholder="Пошук" {% if request.GET.query %}value="{{ request.GET.query}}"{% endif %}>
+        {% if request.GET.category %}
+        <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+        <button type="sumbit">Пошук</button>
+        <a href="?{% change_params query="" %}"><button type="button">Скинути</button></a>
+    </form>
+</div>
+
+<!-- Новини -->
+<div class="news">
+    {% if news %}
+    {% for new in news %}
+    <a href="{% url "main:new" new.slug %}">
+        <article class="new">
+            {% if new.image %}
+            <img src="{{ new.image.url }}" onerror="this.src='{% static "image_not_found.png" %}';" alt="Зображення новини">
+            {% endif %}
+            <h2 class="new-title">
+                {% autoescape off %}
+                {% if new.titleline %} {{ new.titleline }} {% else %} {{ new.title }} {% endif %}
+                {% endautoescape %}
+            </h2>
+
+            <p class="new-text">
+                {% autoescape off %}
+                {% if new.textline %} {{ new.textline|linebreaksbr }} {% else %} {{ new.text|linebreaksbr }} {% endif %}
+                {% endautoescape %}
+            </p>
+
+            {% if new.category %}
+            <hr class="new-category-line">
+            <p class="new-category">Категорія: {{ new.category }}</p>
+            {% endif %}
+        </article>
+    </a>
+    {% endfor %}
+    {% else %}
+    <h2 class="nothing-found">{{ message }}</h2>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "base.css" %}">
+    {% block css %}
+    {% endblock css %}
+    {% block title %}
+    <title>News - <Назва новини></title>
+    {% endblock title %}
+</head>
+
+<body>
+    <!-- Верхня панель -->
+    <header class="header">
+        <nav class="menu">
+            <a href="{% url "main:index" %}">
+                <h1 class="title link">News</h1>
+            </a>
+            <a href="{% url "main:info" %}">
+                <li class="info-link link">Інформація</li>
+            </a>
+            <a href="{% url "admin:index" %}">
+                <li class="admin-panel-link link">Адмін панель</li>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Контент на сторінці -->
+    <main class="main">
+        {% block content %}{% endblock content %}
+    </main>
+</body>
+
+</html>

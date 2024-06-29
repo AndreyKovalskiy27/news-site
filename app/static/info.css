@@ -1,0 +1,26 @@
+.info-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.info-container {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .info-title {
+        font-size: 1.5em;
+    }
+
+    .info-container {
+        padding: 10px;
+    }
+}

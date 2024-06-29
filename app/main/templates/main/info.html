@@ -1,0 +1,20 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static "info.css" %}">
+{% endblock css %}
+{% block title %}
+<title>News - інформація</title>
+{% endblock title %}
+
+{% block content %}
+<div class="info-container">
+    <h2 class="info-title">Інформація</h2>
+
+    {% for info in information %}
+    <p class="info">{{ info.display }}</p>
+    {% endfor %}
+</div>
+{% endblock content %}
