@@ -25,7 +25,7 @@
 <!-- Пошук -->
 <div class="search">
     <h3>Пошук</h3>
-    <form class="search-form" action="{% url "main:index" %}" method="get">
+    <form class="search-form" action="{% url "news:index" %}" method="get">
         <input type="text" name="query" placeholder="Пошук" {% if request.GET.query %}value="{{ request.GET.query}}"{% endif %}>
         {% if request.GET.category %}
         <input type="hidden" name="category" value="{{ request.GET.category }}">
@@ -39,7 +39,7 @@
 <div class="news">
     {% if news %}
     {% for new in news %}
-    <a href="{% url "main:new" new.slug %}">
+    <a href="{% url "news:new" new.slug %}">
         <article class="new">
             {% if new.image %}
             <img src="{{ new.image.url }}" onerror="this.src='{% static "image_not_found.png" %}';" alt="Зображення новини">

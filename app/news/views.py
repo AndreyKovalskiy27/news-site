@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from main import models
-from main.utils import get_news
+from news import models
+from news.utils import get_news
 
 
 # Create your views here.

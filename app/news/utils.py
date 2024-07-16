@@ -2,7 +2,7 @@
 
 
 from django.contrib.postgres.search import SearchVector, SearchHeadline
-from main.models import News
+from news.models import News
 
 
 def get_news(category_slug: str = None, query: str = None):

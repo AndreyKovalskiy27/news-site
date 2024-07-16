@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "django.contrib.postgres",
-    "main"
+    "news"
 ]
 
 MIDDLEWARE = [
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "*",
-        "USER": "*",
-        "PASSWORD": "*",
-        "HOST": "*",
-        "PORT": "*"
+        'NAME': "news",
+        "USER": "news",
+        "PASSWORD": "news",
+        "HOST": "127.0.0.1",
+        "PORT": "5432"
     }
 }
 

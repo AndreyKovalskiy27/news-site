@@ -1,8 +1,8 @@
 from django.urls import path
-from main import views
+from news import views
 
 
-app_name = "main"
+app_name = "news"
 urlpatterns = [
     path("", views.index, name="index"),
     path("new/<slug:new_slug>", views.new, name="new"),
